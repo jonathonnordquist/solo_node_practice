@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  div#formarea
+    form(name="newpost", action='/', method='post')
+      input(type='text', name='title', placeholder='Post Title')
+      br
+      textarea(name='postContent', placeholder='Post Content')
+      br
+      input(type='submit', value='Create New Post')
+
+  div#postarea
+    each post, i in posts
+      p= posts[i].title
+      p= posts[i].content
