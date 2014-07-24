@@ -13,5 +13,8 @@ block content
 
   div#postarea
     each post, i in posts
-      p= posts[i].title
-      p= posts[i].content
+      div
+        p= posts[i].title
+        p= posts[i].content
+        form(method="POST", action="/" + posts[i]._id + "?_method=DELETE")
+           input(type='submit' value='Delete?')
