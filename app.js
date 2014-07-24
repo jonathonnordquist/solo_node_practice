@@ -4,9 +4,11 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var connect = require('connect')
+var methodOverride = require("method-override");
 
 // Sets mongo database equal to db variable
-var mongo = require('mongoskin')
+var mongo = require('mongoskin');
 var db = mongo.db("mongodb://localhost:27017/nodesolo1", {native_parser: true})
 
 
@@ -24,6 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));
 
 // Makes db accesable to the router
 app.use(function(req,res,next){
