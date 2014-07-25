@@ -36,4 +36,22 @@ router.delete('/:id', function(req, res){
 	});
 })
 
+router.get('/update/:id', function(req, res){
+	var db = req.db;
+	var target = req.params.id;
+	db.collection('posts').findById(target, function(err, result){
+		res.render('update', {title: "Update post", post: result});
+	});
+})
+
+router.put('/update/:id', function(req, res){
+	var db = req.db;
+	var target = req.params.id;
+	db.collection('posts').updateById(target, 
+		{title: req.body.title,
+		 content: req.body.postContent
+		}, function(err, result){
+		res.redirect('/')
+	});
+})
 module.exports = router;

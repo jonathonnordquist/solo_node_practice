@@ -18,3 +18,4 @@ block content
         p= posts[i].content
         form(method="POST", action="/" + posts[i]._id + "?_method=DELETE")
            input(type='submit' value='Delete?')
+        a(href="/update/" + posts[i]._id) Update        
