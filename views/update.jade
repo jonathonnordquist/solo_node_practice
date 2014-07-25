@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	h1= title
+	form(method="POST", action="/update/" + post._id + "?_method=PUT")
+		input(type='text' value='#{post.title}' name='title')
+		br
+		input(type='text' value='#{post.content}' name='postContent')
+		br
+		input(type='submit' value="Update Post")
